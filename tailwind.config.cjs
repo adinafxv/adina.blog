@@ -58,6 +58,9 @@ module.exports = {
     },
     fontFamily: {
       mono: ["IBM Plex Mono", "monospace"],
+      text: ["Inter", "Arial"],
+      tech: ["IBM Plex Mono", "monospace"],
+      draw: ["Virgil", "serif-sans"],
     },
     // },
   },
