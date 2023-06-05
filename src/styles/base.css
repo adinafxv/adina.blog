@@ -2,15 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-headings: "Inter";
+  --font-headings-weight: 600;
+  --font-text: var(--font-headings);
+  --font-text-weight: 400;
+  --font-tech: "IBM Plex Mono", "Monospace", -apple-system, system-ui;
+  --font-tech-weight: 400;
+  --font-tech-weight-strong: 600;
+  --font-menu: var(--font-tech);
+  --font-menu-weight: 600;
+  --font-draw: "Virgil", Arial, -apple-system, system-ui;
+
+  --font-normal: 20px;
+  --font-small: 12px;
+
+  --line-height-heading: 108%;
+  --line-height-code: 160%;
+  --line-height-paragraph: 180%;
+  --line-height-list: 200%;
+
+  --color-dark-base: rgb(54, 54, 54);
+  --color-silver: rgb(245, 245, 245);
+  --color-army-pastel: rgb(227, 231, 218);
+  --color-army-base: rgb(100, 111, 82);
+  --color-banana-pastel: hsla(37, 100%, 97%, 1);
+  --color-banana-base: rgb(255, 236, 61);
+  --color-banana-ripe: rgb(248, 209, 18);
+  --color-lollipop: hsla(324, 98%, 44%, 1);
+  --color-lollipop-ripe: hsla(324, 97%, 35%, 1);
+  --color-melon-base: hsla(4, 67%, 82%, 1);
+  --color-melon-pastel: hsla(4, 70%, 96%, 1);
+}
+
 @layer base {
   :root,
   html[data-theme="light"] {
-    --color-fill: 246, 238, 225;
-    --color-text-base: 1, 44, 86;
-    --color-accent: 225, 74, 57;
-    --color-card: 217, 209, 195;
-    --color-card-muted: 239, 216, 176;
-    --color-border: 220, 152, 145;
+    --color-fill: 227, 231, 218;
+    --color-text-base: 54, 54, 54;
+    --color-accent: 100, 111, 82;
+    --color-card: 227, 231, 218;
+    --color-card-muted: 245, 245, 245;
+    --color-border: 100, 111, 82;
   }
   html[data-theme="dark"] {
     --color-fill: 33, 39, 55; /* lower contrast bgColor */
@@ -20,6 +53,7 @@
     --color-card-muted: 138, 51, 2;
     --color-border: 171, 75, 8;
   }
+
   #sun-svg,
   html[data-theme="dark"] #moon-svg {
     display: none;
@@ -31,8 +65,9 @@
 
   body {
     @apply flex min-h-screen flex-col bg-skin-fill font-mono text-skin-base 
-    selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
+    selection:bg-skin-accent selection:bg-opacity-40;
   }
+
   section,
   footer {
     @apply mx-auto max-w-3xl px-4;
@@ -51,8 +86,8 @@
   }
   .prose {
     @apply prose-headings:!mb-3 prose-headings:!text-skin-base 
-    prose-h3:italic prose-p:!text-skin-base 
-    prose-a:!text-skin-base prose-a:!decoration-dashed prose-a:underline-offset-8
+    prose-p:!text-skin-base 
+    prose-a:!text-skin-base prose-a:underline-offset-4
     hover:prose-a:text-skin-accent prose-blockquote:!border-l-skin-accent
     prose-blockquote:border-opacity-50 prose-blockquote:opacity-80
     prose-figcaption:!text-skin-base prose-figcaption:opacity-70
@@ -124,4 +159,80 @@
   .focus-outline {
     @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headings);
+  font-weight: var(--font-headings-weight);
+  line-height: var(--line-height-heading);
+}
+
+body,
+p,
+a {
+  font-family: Inter;
+  line-height: var(--line-height-paragraph);
+}
+
+.note {
+  font-family: var(--font-draw);
+  font-weight: 400;
+}
+
+#menu-items a {
+  font-family: var(--font-menu);
+  font-weight: var(--font-menu-weight);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin: 0 8px;
+  font-size: 20px;
+}
+
+#menu-items a.active {
+  color: var(--color-army-base);
+  position: relative;
+}
+
+#menu-items a.active::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  transform: rotate(24deg);
+  background-image: url("data:image/svg+xml,%3Csvg width='21' height='22' viewBox='0 0 21 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17.3251 12.543C16.2477 14.3849 15.7321 16.3084 15.0932 18.3069C14.9685 18.6972 15.1958 19.1166 15.5999 19.2453C16.0043 19.3741 16.4337 19.161 16.5587 18.7707C17.1645 16.8757 17.6395 15.0433 18.6625 13.2936C18.8695 12.9397 18.7378 12.4836 18.3684 12.2775C17.9998 12.0692 17.5319 12.1891 17.3251 12.543Z' fill='%23657153'/%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M14.1172 7.45548C9.80491 9.49916 5.44274 12.4679 2.04633 15.7547C1.74998 16.0419 1.75432 16.5128 2.05649 16.8048C2.35867 17.0968 2.84418 17.1025 3.14053 16.8153C6.42467 13.6375 10.6435 10.7663 14.8127 8.79194C15.1898 8.6126 15.34 8.16799 15.1479 7.79978C14.9558 7.43156 14.4942 7.27614 14.1172 7.45548Z' fill='%23657153'/%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M14.1945 3.89429C11.1889 2.49089 7.69816 2.41394 4.48857 2.80003C4.06944 2.85181 3.77866 3.22272 3.83924 3.62766C3.89938 4.03504 4.28858 4.32375 4.70703 4.27434C7.6304 3.92167 10.8137 3.95153 13.5513 5.22931C13.9353 5.40873 14.3912 5.25457 14.5683 4.88699C14.7457 4.51947 14.5782 4.07364 14.1945 3.89429Z' fill='%23657153'/%3E %3C/svg%3E ");
+  background-repeat: no-repeat;
+}
+
+#menu-items a.active::after {
+  content: "";
+  position: absolute;
+  right: -13px;
+  top: 7px;
+  width: 20px;
+  height: 20px;
+  transform: rotate(-10deg);
+  background-image: url("data:image/svg+xml,%3Csvg width='23' height='24' viewBox='0 0 23 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.36397 15.3639C6.90736 16.8375 7.93313 18.5443 9.09811 20.2893C9.32557 20.6301 9.22271 21.0959 8.8697 21.331C8.51647 21.5663 8.04494 21.4798 7.81726 21.1391C6.71263 19.4844 5.7509 17.854 4.28524 16.454C3.98871 16.1709 3.9896 15.6961 4.28795 15.3962C4.58477 15.0944 5.06766 15.0807 5.36397 15.3639Z' fill='%23657153'/%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.0446 9.58957C11.7531 10.3655 16.7646 12.0168 20.9354 14.2401C21.2994 14.4345 21.4251 14.8884 21.2151 15.2523C21.0051 15.6163 20.54 15.7556 20.1759 15.5613C16.1431 13.4118 11.2963 11.8146 6.74435 11.066C6.33244 10.9975 6.06556 10.6115 6.14872 10.2046C6.23189 9.79773 6.63268 9.52111 7.0446 9.58957Z' fill='%23657153'/%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.98861 6.18749C8.49095 4.00999 11.8252 2.97386 15.0169 2.46032C15.4341 2.39456 15.8158 2.67095 15.8692 3.0769C15.9237 3.48508 15.6291 3.86988 15.2133 3.93772C12.3059 4.40451 9.25415 5.31066 6.97486 7.29351C6.65517 7.57182 6.1744 7.54932 5.90284 7.24479C5.63107 6.94039 5.66914 6.46567 5.98861 6.18749Z' fill='%23657153'/%3E %3C/svg%3E ");
+  background-repeat: no-repeat;
+}
+
+.social-icons a {
+  color: var(--color-army-base);
+}
+
+.copyright-wrapper {
+  font-family: var(--font-tech);
+  font-weight: var(--font-tech-weight);
+  font-size: var(--font-small);
+}
+
+.prose a {
+  text-decoration-style: initial !important;
+  text-underline-offset: 4px;
 }

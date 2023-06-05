@@ -14,9 +14,9 @@ export const LOCALE = ["en-EN"]; // set to [] to use the environment default
 
 export const LOGO_IMAGE = {
   enable: true,
-  svg: false,
-  width: 260,
-  height: 75,
+  svg: true,
+  width: 180,
+  height: 70,
 };
 
 export const SOCIALS: SocialObjects = [

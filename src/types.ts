@@ -1,3 +1,5 @@
+import type Icons from "@components/Icons.astro";
+
 export type Site = {
   website: string;
   author: string;
