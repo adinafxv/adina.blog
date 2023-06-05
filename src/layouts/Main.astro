@@ -1,5 +1,6 @@
 ---
 import Breadcrumbs from "@components/Breadcrumbs.astro";
+import Hr from "@components/Hr.astro";
 
 export interface Props {
   pageTitle: string;
@@ -9,9 +10,10 @@ export interface Props {
 const { pageTitle, pageDesc } = Astro.props;
 ---
 
-<Breadcrumbs />
+<!-- <Breadcrumbs /> -->
 <main id="main-content">
   <h1>{pageTitle}</h1>
+  <Hr />
   <p>{pageDesc}</p>
   <slot />
 </main>
@@ -20,10 +22,7 @@ const { pageTitle, pageDesc } = Astro.props;
   #main-content {
     @apply mx-auto w-full max-w-3xl px-4 pb-12;
   }
-  #main-content h1 {
-    @apply text-2xl font-semibold sm:text-3xl;
-  }
   #main-content p {
-    @apply mt-2 mb-6 italic;
+    @apply mb-6 mt-2;
   }
 </style>

@@ -115,7 +115,6 @@ const { activeNav } = Astro.props;
       </nav>
     </div>
   </div>
-  <Hr />
 </header>
 
 <style>
@@ -136,6 +135,10 @@ const { activeNav } = Astro.props;
   }
   .hamburger-menu svg {
     @apply h-6 w-6 scale-125 fill-skin-base;
+  }
+
+  header {
+    @apply mb-8 mt-6;
   }
 
   nav {
